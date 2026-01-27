@@ -1,32 +1,31 @@
-import express from "express"
-import config from "./constants/constants.json" with { type: "json" }
-import { link } from "fs/promises"
+import express, { json } from "express"
+// import config from "./constants/constants.json" with { type: "json" }
+import path from "path"
 const app = express()
-const port = config.PORT
+const port = 5050
 
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
+app.set("view engine", "ejs")
+app.set("views", path.join(__dirname, "views"))
 
 app.get("/", (req, res) => {
-    const htmlContent = `
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sample Page</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <h1>Welcome to the Sample Page</h1>
-        <p>This is a simple HTML page served by Express.js</p>
-    </body>
-    </html>
-    `
-    res.send(htmlContent)
+    res.render("index", { title: "Main Page"})
 })
 
+app.get("/getInfo", (req, res) => {
+    res.json({title: "name", test: "wasd"})
+})
 
+app.post("/post", (req, res) => {
+    let body = req.body
+    let statusCode = res.statusCode
 
+    body["CODE"] = statusCode
 
+    res.json(body)
+}) 
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
