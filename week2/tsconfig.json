@@ -7,8 +7,8 @@
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "nodenext",
-    "target": "es2024",
+    "target": "esnext",
+    "module": "commonjs",
     "types": [],
     // For nodejs:
     // "lib": ["esnext"],
@@ -31,7 +31,8 @@
     // "noUnusedParameters": true,
     // "noFallthroughCasesInSwitch": true,
     // "noPropertyAccessFromIndexSignature": true,
-
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     // Recommended Options
     "strict": true,
     "noEmit": false,
