@@ -1,5 +1,5 @@
 import bettersqlite3 from "better-sqlite3";
-import { DATABASE_NAME } from "../constants";
+import { DATABASE_NAME } from "../../lib/constants";
 
 export class DatabaseHandler {
     databaseName: string
@@ -15,5 +15,5 @@ export class DatabaseHandler {
     }
 }
 
-const BetterSqlite = new DatabaseHandler(DATABASE_NAME)
-export default BetterSqlite
+// const Connection = new DatabaseHandler(DATABASE_NAME)
+export default DatabaseHandler

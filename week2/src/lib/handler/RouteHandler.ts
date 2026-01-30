@@ -1,7 +1,7 @@
 import path from "path"
 import fs from "fs"
 import { IController } from "../types/IController"
-import { HttpMethod } from "../types/HTTPMethod"
+import { HTTP_METHODS } from "../types/HTTPMethod"
 
 export default class {
 
@@ -50,7 +50,7 @@ export default class {
 
     async __activateRoute(controller: IController) {
         const url: string = controller.url
-        const method = controller.method.toLowerCase() as HttpMethod
+        const method = controller.method.toLowerCase() as HTTP_METHODS
 
         if(this.urlCache[url]) {
             throw new Error(`Duplicate route detected: ${url}`)

@@ -1,16 +1,16 @@
 import { Request, Response } from "express";
 import { IController } from "../../../lib/types/IController";
-import { HttpMethod } from "../../../lib/types/HTTPMethod";
-import BetterSqlite from "../../../lib/handler/Database";
+import { HTTP_METHODS } from "../../../lib/types/HTTPMethod";
+// import BetterSqlite from "../../../lib/handler/Database";
 
 export default class implements IController {
     url: string = "/RemoveSong";
-    method: HttpMethod = "delete";
+    method: HTTP_METHODS = HTTP_METHODS.DELETE;
 
     async execute(req: Request, res: Response) {
         const { id } = req.query
 
-        BetterSqlite.getDB().prepare("DELETE FROM wadsongs WHERE id = ?").run(id);
+        // BetterSqlite.getDB().prepare("DELETE FROM wadsongs WHERE id = ?").run(id);
 
         res.json({
             message: `Song With ID:${id} has been removed`,

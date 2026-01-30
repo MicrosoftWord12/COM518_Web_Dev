@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import { IController } from "../../../lib/types/IController";
-import { HttpMethod } from "../../../lib/types/HTTPMethod";
-import BetterSqlite from "../../../lib/handler/Database";
+import { HTTP_METHODS } from "../../../lib/types/HTTPMethod";
+
 
 export default class implements IController {
     url: string = "/BuySongCopy";
-    method: HttpMethod = "post";
+    method: HTTP_METHODS = HTTP_METHODS.POST;
 
     async execute(req: Request, res: Response) {
         const { id, quantity } = req.body
@@ -16,20 +16,20 @@ export default class implements IController {
         // BetterSqlite.getDB().prepare("UPDATE wadsongs SET quantity = quantity - 1 WHERE id = ?").run(id);
         
         // Potentially Better
-        const sqlQueries = [
-            "INSERT INTO orders(song_id, order_count) values (@song_id, @order_count)",
-            "UPDATE wadsongs SET quantity = quantity - @order_count WHERE id = @id"
-        ]
+        // const sqlQueries = [
+        //     "INSERT INTO orders(song_id, order_count) values (@song_id, @order_count)",
+        //     "UPDATE wadsongs SET quantity = quantity - @order_count WHERE id = @id"
+        // ]
 
-        const transaction = BetterSqlite.getDB().transaction((data) => {
-            for (const query of sqlQueries) {
-                BetterSqlite.getDB().prepare(query).run(data);
-            }
-        })
+        // const transaction = BetterSqlite.getDB().transaction((data: any) => {
+        //     for (const query of sqlQueries) {
+        //         BetterSqlite.getDB().prepare(query).run(data);
+        //     }
+        // })
 
-        transaction({song_id: id, order_count: quantity, id});        
+        // transaction({song_id: id, order_count: quantity, id});        
         res.json({
-            message: `Song with ID:${id} has been purchased, quantity: ${quantity}`,
+            // message: `Song with ID:${id} has been purchased, quantity: ${quantity}`,
         });
     }
 }

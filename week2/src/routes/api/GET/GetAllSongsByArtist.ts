@@ -1,16 +1,17 @@
 import { Request, Response } from "express";
-import { HttpMethod } from "../../../lib/types/HTTPMethod";
+import { HTTP_METHODS } from "../../../lib/types/HTTPMethod";
 import { IController } from "../../../lib/types/IController";
-import BetterSqlite from "../../../lib/handler/Database";
+import { daoHandler } from "../../../data/base/DaoHandler";
+// import BetterSqlite from "../../../lib/handler/Database";
 
 export default class implements IController {
-    url: string = "/GetSongByArtist";
-    method: HttpMethod = "get";
+    url: string = "/GetAllSongsByArtist";
+    method: HTTP_METHODS = HTTP_METHODS.GET;
     
     async execute(req: Request, res: Response) {
         const artist = req.query.artist;
 
-        const songs = BetterSqlite.getDB().prepare("SELECT * FROM wadsongs WHERE artist = ?").all(artist);
+        const songs = daoHandler.getDao("wadsongs")?.createSql("select * from wadsongs where artist = ?", [artist])
 
         res.json({
             message: `Songs by artist: ${artist}`,
