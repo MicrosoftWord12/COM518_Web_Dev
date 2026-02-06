@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./src/main.ts",
-    "build:client": "tsc --project ./src/public/tsconfig.json --watch"
+    "run:server": "nodemon ./src/main.ts",
+    "run:client": "tsc --project ./src/public/tsconfig.json --watch"
   },
   "keywords": [],
   "author": "",
