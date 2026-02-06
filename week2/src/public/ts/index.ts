@@ -1,5 +1,3 @@
-import type { Response } from "express"
-
 document.getElementById("search")?.addEventListener("click", async (e) => {
     const userToSearch = document.getElementById("theArtist") as HTMLInputElement
     const artist = userToSearch.value
