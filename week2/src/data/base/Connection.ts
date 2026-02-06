@@ -1,5 +1,6 @@
 import bettersqlite3 from "better-sqlite3";
 import { DATABASE_NAME } from "../../lib/constants";
+import path from "path";
 
 export class DatabaseHandler {
     databaseName: string
@@ -7,7 +8,9 @@ export class DatabaseHandler {
 
     constructor(databaseFilename: string) {
         this.databaseName = databaseFilename
-        this.db = new bettersqlite3(`./src/data/${this.databaseName}`)
+        const dbPath = path.resolve(__dirname, "..", this.databaseName)
+        console.log("Database path:", dbPath)
+        this.db = new bettersqlite3(dbPath)
     }
 
     getDB(): bettersqlite3.Database {
@@ -15,5 +18,4 @@ export class DatabaseHandler {
     }
 }
 
-// const Connection = new DatabaseHandler(DATABASE_NAME)
 export default DatabaseHandler
