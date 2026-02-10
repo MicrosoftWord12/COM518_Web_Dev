@@ -1,4 +1,5 @@
 import * as leaflet from "leaflet"
+import 'leaflet/dist/leaflet.css';
 
 const map = leaflet.map("map1");
 
@@ -9,3 +10,5 @@ leaflet.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
             
 map.setView([50.908,-1.4], 14);
+
+// 297883
