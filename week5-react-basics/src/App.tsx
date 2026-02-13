@@ -1,7 +1,5 @@
-import Counter from './components/Counter'
-import { map, latLng, tileLayer, marker, Marker } from 'leaflet'
-import type { LeafletMouseEvent, MapOptions } from 'leaflet'
-
+import { map, tileLayer, marker } from 'leaflet'
+import type { LeafletMouseEvent } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import "./css/index.css"
 import { useEffect } from 'react'
@@ -37,7 +35,7 @@ function App() {
   return (
     <>
       {/* <h1>Testinhg Dat</h1> */}
-      <div id="map" style={{ height: "400px" }}></div>
+      <div id="map" className='bg-amber-950'></div>
     </>
   )
 }
