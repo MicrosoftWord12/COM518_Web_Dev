@@ -1,4 +1,4 @@
 export default {
-    root: "./src",
+    root: "./src/public",
     outDir: "./dist"
 }
