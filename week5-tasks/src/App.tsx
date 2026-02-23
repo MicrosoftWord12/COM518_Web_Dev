@@ -68,7 +68,9 @@ function App() {
   )
 
   function purchaseTicket(name: string, age: number, country: string) {
+
     const location = locations.find(location => location.city.toLowerCase() == country.toLowerCase())
+    
     if (!location) {
       setResponse("Sorry, we don't have tickets for your location")
       return
