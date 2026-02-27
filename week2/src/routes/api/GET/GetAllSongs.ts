@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { HTTP_METHODS } from "../../../lib/types/HTTPMethod";
 import { IController } from "../../../lib/types/IController";
-// import BetterSqlite from "../../../lib/handler/Database";
 import { daoHandler } from "../../../data/base/DaoHandler";
 
 export default class implements IController {

@@ -2,7 +2,7 @@ import IDao from "../../lib/types/IDao";
 import DatabaseHandler from "../base/Connection";
 
 export default class implements IDao {
-    tableName: string = "wadsongs";
+    tableName: string = "accommodations";
     db: DatabaseHandler
 
     constructor(db: DatabaseHandler) {
