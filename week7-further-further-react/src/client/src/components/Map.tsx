@@ -46,7 +46,7 @@ export default function ({items}: MapProps) {
         console.log("items has changed... running the effect");
         if (!map.current) {
             map.current = Leaflet.map('map').setView([51.505, -0.09], 14)
-        }
+        }   
 
         Leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
