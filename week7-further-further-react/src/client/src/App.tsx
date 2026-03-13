@@ -1,10 +1,11 @@
 import Map from './components/Map'
 import "leaflet/dist/leaflet.css"
-import "./styles/index.css"
 import Search from './components/Search'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import type IMapItem from './types/IMapItem'
 import { latLng } from 'leaflet'
+import SearchResults from './components/SearchResults'
+import "./styles/index.css"
 
 function App() {
   const [getPlaces, setPlaces] = useState<IMapItem[]>([])
@@ -27,7 +28,6 @@ function App() {
         const newArr: IMapItem[] = []
 
         pois.forEach((value: any)=> {
-          console.log(value)
 
           const mapItem: IMapItem = {
             coords: latLng(value["lat"], value["lon"]),
@@ -36,10 +36,10 @@ function App() {
           newArr.push(mapItem)
         })
         
-        console.log('newArr:');
-        console.log(newArr)
         setPlaces(newArr)
       }}/>
+
+      <SearchResults mapItems={getPlaces} />
     </>
   )
 }
